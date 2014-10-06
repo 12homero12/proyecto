@@ -1,7 +1,7 @@
-{%extends "base.html"%}
-{%block container%}
+{%extends "principal.html"%}
+{%block containerr%}
 <body>
-	<form>
+	<form action="" method="post">
 		{{form.as_ul}}
 		{% csrf_token %}
 		<input type="submit" value="enviar">
