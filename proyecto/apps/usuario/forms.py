@@ -20,3 +20,6 @@ class PerfilForm(ModelForm):
 	class Meta:
 		model=Perfil
 		exclude=['usuario']
+class TemaForm(ModelForm):
+	class Meta:
+		model=Tema

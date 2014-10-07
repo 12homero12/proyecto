@@ -21,9 +21,9 @@ def registro_usuario(request):
 			usua=User.objects.get (username=nuevo_usua)
 			#pdb.set_trace()
 			#ema=User.objects.get (email=nuevo_ema)
-			usuario=Perfil.objects.create(usuario=usua)
+			#usuario=Perfil.objects.create(usuario=usua)
 			#usuario=Usuario.objects.create(usuario=ema)
-			return HttpResponseRedirect("/perfil/")
+			return HttpResponseRedirect("/login/")
 	else:
 		form_re=UsuarioForm()
 	return render_to_response("usuario/registro.html",{"form":form_re},RequestContext(request))
@@ -50,3 +50,12 @@ def perfil_usuario(request):
 	#usuario=User.objects.filter(username=)
 	form_per=PerfilForm()
 	return render_to_response("usuario/perfil.html",{"nombre":request.session["name"],"form_per":form_per},RequestContext(request))
+def agregar_tema(request):
+	if (request.method=="POST"):
+		form_tem=TemaForm(request.POST)
+		if(form_tem.is_valid()):
+			form_tem.save()
+			return HttpResponseRedirect("/preguntas/")
+	else:
+		form_tem=TemaForm()
+	return render_to_response("tema/tema.html",{"form_tem":form_tem},RequestContext(request))

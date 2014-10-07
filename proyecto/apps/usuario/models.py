@@ -11,3 +11,7 @@ from .thumbs import ImageWithThumbsField
 class Perfil(models.Model):
 	usuario=models.ManyToManyField(User)
 	avatar = ImageWithThumbsField(upload_to="img_user", sizes=(50,50))
+class Tema(models.Model):
+	nombre_tema=models.CharField(max_length=100, unique=True , null=True)
+	def __unicode__(self):
+		return (self.nombre_tema)

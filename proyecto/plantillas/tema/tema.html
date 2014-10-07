@@ -1,0 +1,9 @@
+{%extends "principal.html"%}
+{%block containerr%}
+<h1>Agregar Tema</h1>
+<form action="" method="post">
+	{{form_tem.as_p}}
+	{% csrf_token %}
+	<input type="submit" value="Enviar">
+</form>
+{%endblock%}
