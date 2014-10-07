@@ -16,3 +16,6 @@ class UsuarioForm(UserCreationForm):
 		if commit:
 			user.save()
 		return user
+class PerfilForm(ModelForm):
+	model=Perfil
+	exclude=['user']

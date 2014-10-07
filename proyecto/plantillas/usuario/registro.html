@@ -1,10 +1,9 @@
 {%extends "principal.html"%}
 {%block containerr%}
-<body>
-	<form action="" method="post">
-		{{form.as_p}}
-		{% csrf_token %}
-		<input type="submit" value="enviar">
-	</form>
-</body>
+<h1>Registro</h1>
+<form action="" method="post">
+	{{form.as_p}}
+	{% csrf_token %}
+	<input type="submit" value="enviar">
+</form>
 {%endblock%}

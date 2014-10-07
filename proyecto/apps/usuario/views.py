@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from .models import *
 from .forms import *
-from django.contrib.auth.models import User
+from django.contrib.auth.models import *
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 import pdb
@@ -15,11 +15,15 @@ def registro_usuario(request):
 		form_re=UsuarioForm(request.POST)
 		if form_re.is_valid():
 			#pdb.set_trace()
-			#nuevo=request.POST["username"]
+			nuevo_usua=request.POST["username"]
+			nuevo_ema=request.POST["email"]
 			form_re.save()
-			#usua=User.objects.get (username=nuevo)
-			#usuario=usuario.objects.create(user=usua)
-			return HttpResponseRedirect("/login/")
+			usua=User.objects.get (username=nuevo_usua)
+			#pdb.set_trace()
+			#ema=User.objects.get (email=nuevo_ema)
+			usuario=Perfil.objects.create(usuario=usua)
+			#usuario=Usuario.objects.create(usuario=ema)
+			return HttpResponseRedirect("/perfil/")
 	else:
 		form_re=UsuarioForm()
 	return render_to_response("usuario/registro.html",{"form":form_re},RequestContext(request))
@@ -34,7 +38,7 @@ def login_usuario(request):
 			if resultado:
 				login(request, resultado)
 				request.session["name"]=username
-				return HttpResponseRedirect("/registro/")
+				return HttpResponseRedirect("/perfil/")
 	form=AuthenticationForm()
 	return render_to_response("usuario/login.html",{"form":form},RequestContext(request))
 def logout_usuario(request):
@@ -42,3 +46,5 @@ def logout_usuario(request):
 	return HttpResponseRedirect("/")
 def principal(request):
 	return render_to_response("principal.html",{},RequestContext(request))
+def perfil_usuario(request):
+	return render_to_response("usuario/perfil.html",{},RequestContext(request))
