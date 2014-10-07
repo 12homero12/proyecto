@@ -17,5 +17,6 @@ class UsuarioForm(UserCreationForm):
 			user.save()
 		return user
 class PerfilForm(ModelForm):
-	model=Perfil
-	exclude=['user']
+	class Meta:
+		model=Perfil
+		exclude=['usuario']

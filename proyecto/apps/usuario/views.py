@@ -16,7 +16,7 @@ def registro_usuario(request):
 		if form_re.is_valid():
 			#pdb.set_trace()
 			nuevo_usua=request.POST["username"]
-			nuevo_ema=request.POST["email"]
+			#nuevo_ema=request.POST["email"]
 			form_re.save()
 			usua=User.objects.get (username=nuevo_usua)
 			#pdb.set_trace()
@@ -43,8 +43,10 @@ def login_usuario(request):
 	return render_to_response("usuario/login.html",{"form":form},RequestContext(request))
 def logout_usuario(request):
 	logout(request)
-	return HttpResponseRedirect("/")
+	return HttpResponseRedirect("/login/")
 def principal(request):
 	return render_to_response("principal.html",{},RequestContext(request))
 def perfil_usuario(request):
-	return render_to_response("usuario/perfil.html",{},RequestContext(request))
+	#usuario=User.objects.filter(username=)
+	form_per=PerfilForm()
+	return render_to_response("usuario/perfil.html",{"nombre":request.session["name"],"form_per":form_per},RequestContext(request))

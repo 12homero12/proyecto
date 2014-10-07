@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 from .thumbs import ImageWithThumbsField
 # Create your models here.
 
-class Usuario(models.Model):
-	usuario= models.OneToOneField(User)
-	Email= models.EmailField(User)
+#class Usuario(models.Model):
+#	usuario= models.OneToOneField(User)
+#	Email= models.EmailField(User)
 	#def __unicode__(self):
 	#	return(self.)
 class Perfil(models.Model):
