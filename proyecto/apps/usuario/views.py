@@ -12,20 +12,17 @@ import pdb
 
 def registro_usuario(request):
 	if (request.method=="POST"):
-		#form=UserCreationForm(request.POST)
-		form=UserForm()
-		#pdb.set_trace()
-		#user=form.save()
-		#usua=usuario()
-		#usua.usuario=user
-		#usua.Email=form.cleaned_data['Email']
-		if(form.is_valid()):
-			#form.save()
-			usua.save()
-			return HttpResponseRedirect("")
-	form=UserForm()
-	#form=UserCreationForm()
-	return render_to_response("usuario/registro.html",{"form":form},RequestContext(request))
+		form_re=UsuarioForm(request.POST)
+		if form_re.is_valid():
+			#pdb.set_trace()
+			#nuevo=request.POST["username"]
+			form_re.save()
+			#usua=User.objects.get (username=nuevo)
+			#usuario=usuario.objects.create(user=usua)
+			return HttpResponseRedirect("/login/")
+	else:
+		form_re=UsuarioForm()
+	return render_to_response("usuario/registro.html",{"form":form_re},RequestContext(request))
 def login_usuario(request):
 	if request.method=="POST":
 		form=AuthenticationForm(request.POST)
