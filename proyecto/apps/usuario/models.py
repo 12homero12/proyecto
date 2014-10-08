@@ -12,6 +12,16 @@ class Perfil(models.Model):
 	usuario=models.ManyToManyField(User)
 	avatar = ImageWithThumbsField(upload_to="img_user", sizes=(50,50))
 class Tema(models.Model):
-	nombre_tema=models.CharField(max_length=100, unique=True , null=True)
+	nombre_tema=models.CharField(max_length=100, null=True)
 	def __unicode__(self):
 		return (self.nombre_tema)
+class Pregunta(models.Model):
+	pregunta=models.CharField(max_length=100)
+	pre=models.ForeignKey(Tema)
+	#def __unicode__(self):
+	#	return(self,pregunta)
+class Respuesta(models.Model):
+	respuesta=models.CharField(max_length=100)
+	res=models.ForeignKey(Pregunta)
+	def __unicode__(self):
+		return (self.respuesta)

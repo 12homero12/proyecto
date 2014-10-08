@@ -54,8 +54,37 @@ def agregar_tema(request):
 	if (request.method=="POST"):
 		form_tem=TemaForm(request.POST)
 		if(form_tem.is_valid()):
+			tema=request.POST["nombre_tema"]
+			request.session["tema"]=tema
 			form_tem.save()
-			return HttpResponseRedirect("/preguntas/")
+			return HttpResponseRedirect("/pregunta/")
 	else:
 		form_tem=TemaForm()
 	return render_to_response("tema/tema.html",{"form_tem":form_tem},RequestContext(request))
+def pregunta(request):
+	#pdb.set_trace()
+	if (request.method=="POST"):
+		form_pre=PreguntaForm(request.POST)
+		tem=Tema.objects.get(nombre_tema=request.session["tema"])
+		if(form_pre.is_valid()):
+			pre=request.POST["pregunta"]
+			request.session["pregunta"]=pre
+			tema=form_pre.save(commit=False)
+			tema.pre=tem
+			tema.save()
+			return HttpResponseRedirect("/respuesta/")
+	else:
+		form_pre=PreguntaForm()
+	return render_to_response("tema/pregunta.html",{"form_pre":form_pre},RequestContext(request))
+def respuesta(request):
+	if (request.method=="POST"):
+		form_res=RespuestaForm(request.POST)
+		pregunta=Pregunta.objects.get(pregunta=request.session["pregunta"])
+		if(form_res.is_valid()):
+			preg=form_res.save(commit=False)
+			preg.res=pregunta
+			preg.save()
+			return HttpResponseRedirect("/respuesta/")
+	else:
+		form_res=RespuestaForm()
+	return render_to_response("tema/respuesta.html",{"form_res":form_res},RequestContext(request))

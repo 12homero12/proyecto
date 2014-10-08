@@ -4,3 +4,5 @@ from .models import *
 #admin.site.register(Usuario)
 admin.site.register(Perfil)
 admin.site.register(Tema)
+admin.site.register(Pregunta)
+admin.site.register(Respuesta)

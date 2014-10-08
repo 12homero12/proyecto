@@ -13,6 +13,8 @@ urlpatterns = patterns('',
     url(r'^logout/$',logout_usuario),
     url(r'^perfil/$',perfil_usuario),
     url(r'^tema/$',agregar_tema),
+    url(r'^pregunta/$',pregunta),
+    url(r'^respuesta/$',respuesta),
 
 
 

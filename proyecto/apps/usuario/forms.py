@@ -23,3 +23,11 @@ class PerfilForm(ModelForm):
 class TemaForm(ModelForm):
 	class Meta:
 		model=Tema
+class PreguntaForm(ModelForm):
+	class Meta:
+		model=Pregunta
+		exclude=['pre']
+class RespuestaForm(ModelForm):
+	class Meta:
+		model=Respuesta
+		exclude=['res']
