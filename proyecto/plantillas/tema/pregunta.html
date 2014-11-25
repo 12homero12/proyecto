@@ -1,9 +1,0 @@
-{%extends "principal.html"%}
-{%block containerr%}
-<h1>Preguntas</h1>
-<form action="" method="post">
-	{{form_pre.as_p}}
-	{% csrf_token %}
-	<button  type = "submit"  class = "btn btn-info" > Insertar </ button>
-</form>
-{%endblock%}

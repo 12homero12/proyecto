@@ -1,0 +1,15 @@
+{%extends "principal.html"%}
+{%block containerr%}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<form action="" method="post" enctype="multipart/form-data">
+				{{form_per.as_p}}
+				{% csrf_token %}
+				<input type="submit" value="enviar">
+				<input type="submit" value="cancelar">
+			</form>
+		</div>
+	</div>
+</div>
+{%endblock%}

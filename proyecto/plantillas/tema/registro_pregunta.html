@@ -1,0 +1,20 @@
+{%extends "principal.html"%}
+{%block containerr%}
+<div class="container page">
+			<div class="row">
+				<div class="col-xs-12">
+					{% if estado %}
+						<div class="alert alert-success" role="alert">Se a registrado la pregunta</div>
+					{% endif %}
+					<form action="" method="post">
+					<legend>{{ titulo }}</legend>
+						{{form_pre.as_p}}
+					<legend>{{ titulo2 }}</legend>
+						{{form_re.as_p}}
+						{% csrf_token %}
+						<input type="submit" name="benviar" value="Regitrar">
+					</form>
+				</div>
+			</div>
+		</div>
+{%endblock%}
