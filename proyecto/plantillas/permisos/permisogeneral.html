@@ -1,0 +1,18 @@
+{%extends "principal.html"%}
+{%block containerr%}
+<div class="row pero">
+			<div class="col-xs-12 ">
+			{% if estadoo %}
+				<div class="alert alert-success">{{mensaje}}</div>
+			{% endif %}
+			<form action="" method="post" accept-charset="utf-8">
+				{%csrf_token%}
+				{{form_permg.as_p}}
+				<button  type = "submit"  class = "btn btn-info" > Activar Cuenta </button>
+
+				
+			</form>
+			
+			</div>
+		</div>
+{%endblock%}

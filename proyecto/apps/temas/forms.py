@@ -25,3 +25,9 @@ class SalaForms(ModelForm):
 	class Meta:
 		model=Sala
 		exclude=["usuario"]
+class PermisoForm(ModelForm):
+	class Meta:
+		model=permiso
+class PermisosgeFoms(ModelForm):
+	class Meta:
+		model=permisogeneral

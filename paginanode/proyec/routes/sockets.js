@@ -19,9 +19,7 @@ exports.initialize=function(server){
 	        partidas.push(cliente);
 	        socket.broadcast.emit("crearpartida",partidas);
 	    });
-	});
-
-	
+	});	
 }
 
 

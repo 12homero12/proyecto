@@ -15,8 +15,11 @@ urlpatterns = patterns('',
     url(r'^tema/agregar/respuesta/(\d+)/$',agregar_respuesta),
 
     url(r'^crearsala/$', crear_sala),
-    url(r'^permisos/$',mispermisos),
-    url(r'^permisos/agregar/$',agregar_permiso),
+    #url(r'^permisos/$',mispermisos),
+    #url(r'^permisos/agregar/$',agregar_permiso),
     url(r'^espera/$',espera),
+    url(r'^permisoss/$',permiso),
+    url(r'^permisosg/$',permisogeneral),
+
 
 )

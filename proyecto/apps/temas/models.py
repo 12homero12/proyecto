@@ -5,10 +5,7 @@ from django.contrib.auth.models import User
 
 class Tema(models.Model):
 	nombre= models.CharField(max_length=50, unique=True)
-	class Meta:
-		permissions=(
-			("bloques_permisos", "bloques_permisos"),
-		)
+
 	def __unicode__(self):
 		return self.nombre
 class Pregunta(models.Model):
@@ -17,6 +14,18 @@ class Pregunta(models.Model):
 	tema=models.ForeignKey(Tema)
 	def __unicode__(self):
 		return self.nombre
+class permiso(models.Model):
+	nombre=models.CharField(max_length=100)
+	class Meta:
+		permissions=(
+			("add_tema","add_tema"),
+			("bloques_permisos","bloques_permisos"),
+		)
+	def __unicode__(self):
+		return self.nombre
+class permisogeneral(models.Model):
+	user=models.ForeignKey(User)
+	permiso=models.ForeignKey(permiso)
 
 #class Respuesta(models.Model):
 #	repuesta_correcta=models.CharField(max_length=500)
