@@ -5,9 +5,12 @@ from django.contrib.auth.models import User
 
 class Tema(models.Model):
 	nombre= models.CharField(max_length=50, unique=True)
+	class Meta:
+		permissions=(
+			("bloques_permisos", "bloques_permisos"),
+		)
 	def __unicode__(self):
 		return self.nombre
-	
 class Pregunta(models.Model):
 	user=models.ForeignKey(User)
 	nombre=models.CharField(max_length=500)
@@ -15,11 +18,24 @@ class Pregunta(models.Model):
 	def __unicode__(self):
 		return self.nombre
 
-class Respuesta(models.Model):
-	repuesta_correcta=models.CharField(max_length=500)
-	respuesta=models.CharField(max_length=500)
+#class Respuesta(models.Model):
+#	repuesta_correcta=models.CharField(max_length=500)
+#	respuesta=models.CharField(max_length=500)
+#	pregunta=models.ForeignKey(Pregunta)
+#	def __unicode__(self):
+#		return self.pregunta
+class Res_correcta(models.Model):
+	respuesta_correcta=models.CharField(max_length=500)
+	pregunta=models.ForeignKey(Pregunta)
+#	def __unicode__(self):
+#		return self.pregunta
+class Res_incorrecta(models.Model):
+	respuesta_incorrecta=models.CharField(max_length=500)
 	pregunta=models.ForeignKey(Pregunta)
 	#def __unicode__(self):
 	#	return self.pregunta
-	def __str__(self):
-		return self.pregunta
+class Sala(models.Model):
+	usuario=models.ForeignKey(User)
+	nombre=models.CharField(max_length=100)
+	cantidad=models.IntegerField()
+	tema=models.ManyToManyField(Tema,blank=True)

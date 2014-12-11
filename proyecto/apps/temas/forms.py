@@ -11,7 +11,17 @@ class PreguntaForm(ModelForm):
 		model=Pregunta
 		exclude=['tema', 'user']
 		
-class RespuestasForm(ModelForm):
+class RespuestasCorrectaForm(ModelForm):
 	class Meta:
-		model=Respuesta
+		model=Res_correcta
 		exclude=['pregunta']
+		
+class RespuestasIncorrectaForm(ModelForm):
+	class  Meta:
+		model=Res_incorrecta
+		exclude=['pregunta']
+class SalaForms(ModelForm):
+	tema=forms.ModelMultipleChoiceField(queryset=Tema.objects.all(), widget=forms.CheckboxSelectMultiple(), required=True)
+	class Meta:
+		model=Sala
+		exclude=["usuario"]

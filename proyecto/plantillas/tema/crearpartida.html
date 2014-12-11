@@ -1,0 +1,33 @@
+{%extends "principal.html"%}
+{%block containerr%}
+<!--<div class="container">
+		<div class="row">
+			<div class="col-xs-12 f">
+				<h1>Crear Salas</h1>
+				<form id="sala" action="" >
+					<li>
+						<label>nombre de la partida</label>   <input type="text" name="nombre"/>
+					</li>
+					<li>
+						<label>cantidad maxima de jugadores</label>   <input type="text" name="cantidad"/>
+					</li>
+					<li>
+						<label>cantidad de preguntas</label>   
+						<input type="text" name="pregunta"/>
+					</li>
+					<li>
+						<button type="submit" value="crear" class = "btn btn-primary"/>Crear</button>
+					</li>
+				</form>
+			</div>
+		</div>
+</div>-->
+
+<div class="forms">
+	<form action="" method="post" id="sala">
+		{{form_sala.as_p}}
+		{% csrf_token %}
+		<button  type = "submit"  class = "btn btn-primary">crear</button>
+	</form>
+</div>
+{%endblock%}

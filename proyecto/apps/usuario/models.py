@@ -11,6 +11,16 @@ from .thumbs import ImageWithThumbsField
 class Perfil(models.Model):
 	user=models.OneToOneField(User, unique=True)
 	avatar = ImageWithThumbsField(upload_to="img_user", sizes=((50,50),(200,200)))
+
+#class Sala(models.Model):
+#	nombre=models.CharField(max_length=100)
+#	idUs=models.ForeignKey(User)
+
+#class Mensaje(models.Model):
+#	mensaje=models.TextField()
+#	idUs=models.ForeignKey(User)
+#	idSa=models.ForeignKey(Sala)
+
 #class Tema(models.Model):
 #	nombre_tema=models.CharField(max_length=100, null=True)
 #	def __unicode__(self):

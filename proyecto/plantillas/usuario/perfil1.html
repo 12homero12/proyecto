@@ -1,0 +1,22 @@
+{%extends "principal.html"%}
+{%block containerr%}
+<div class="container">
+		<div class="row">
+		
+		<div class="col-xs-12">
+			<h1>JuegoTrivial</h1>
+			
+		</div>
+	</div>
+	<div class="row perfil">
+		<div class="col-xs-8 ">
+					<p>usuario:
+					<span class="label label-default">{{user}}</span></p>
+					<p>Email:
+					<span class="label label-default">{{user.email}}</span></p>			
+					<p>avatar:
+					<img src="{{ user.perfil.avatar.url_200x200}}" alt="avatar"></h2>	</p>
+		</div>
+	</div>
+</div>
+{%endblock%}

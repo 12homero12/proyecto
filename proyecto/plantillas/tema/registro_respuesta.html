@@ -1,0 +1,25 @@
+{%extends "principal.html"%}
+{%block containerr%}
+<div class="container page">
+			<div class="row">
+				<div class="col-xs-12">
+					{% if estadoo %}
+					<div class="alert alert-danger">{{mensaje}}</div>
+					{% endif %}
+					{% if not estadoo %}
+					{% if estado %}
+						<div class="alert alert-success" role="alert">Se a registrado la respuesta</div>
+					{% endif %}
+					<form action="" method="post">
+					<legend>{{ titulo }}</legend>
+						{{form_res_in}}
+						{% csrf_token %}
+					<button  type = "submit"  class = "btn btn-primary">Registrar</button>
+					
+					<a href="/tema/" class="btn btn-primary" >Cancelar</a>
+					</form>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+{%endblock%}

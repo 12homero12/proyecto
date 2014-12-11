@@ -1,0 +1,25 @@
+{%extends "principal.html"%}
+{%block containerr%}
+{% if estadoo %}
+	<div class="alert alert-danger">{{mensaje}}</div>
+{% endif %}
+{% if not estadoo %}
+<div class="row men">
+			<div class="col-xs-12">
+				<ul class="list-group io">
+					<li class="list-group-item io">Listado de usuarios</li>
+					{% for i in usuario %}
+					<li class="list-group-item permiso">
+						<span class="label label-default">{{i.username}}</span>
+					{% for i in lista %}
+						<li class="list-group-item permiso">
+						<span class="label label-default"><a href="/permisos/agregar/">{{i.id}}</a></span>
+						</li>
+					{% endfor %}
+					</li>
+					{% endfor %}	
+				</ul>
+			</div>
+		</div>
+{% endif %}
+{%endblock%}
