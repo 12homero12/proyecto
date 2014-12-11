@@ -182,18 +182,39 @@ def  permisos(request):
 
 def permiso(request):
 	menu=permisos(request)
+	usuario=request.user
+	#pdb.set_trace()
+	#lista =usuario.user_permissions.all()
+	#pdb.set_trace()
+	if not usuario.has_perm("usuario.add_tema"):
+		estado=True
+		mensaje="Error no puede acceder a este sitio no tiene permisos"
+		datos={"estadoo":estado, "mensaje":mensaje,"menu":menu}
+		return render_to_response("permisos/permiso.html",datos, RequestContext(request))
 	if request.user.is_authenticated():
 		if request.method=="POST":
 			form_perm=PermisoForm(request.POST)
 			if form_perm.is_valid():
 				form_perm.save()
-			return HttpResponseRedirect("/permisoss/")
+			estadoo=True
+			mensaje="se a registrado permiso con exito"
+			dato={"menu":menu,"form_perm":form_perm, "mensaje":mensaje, "estadoo":estadoo}
+			return render_to_response("permisos/permiso.html",dato,RequestContext(request))	
 		else:
 			form_perm=PermisoForm()
 		return render_to_response("permisos/permiso.html",{"menu":menu,"form_perm":form_perm},RequestContext(request))
 	return HttpResponseRedirect("/login/")
 def permisogeneral(request):
 	menu=permisos(request)
+	usuario=request.user
+	#pdb.set_trace()
+	#lista =usuario.user_permissions.all()
+	#pdb.set_trace()
+	if not usuario.has_perm("usuario.add_tema"):
+		estado=True
+		mensaje="Error no puede acceder a este sitio no tiene permisos"
+		datos={"estadoo":estado, "mensaje":mensaje,"menu":menu}
+		return render_to_response("permisos/permiso.html",datos, RequestContext(request))
 	if request.user.is_authenticated():
 		if request.method=="POST":
 			form_permg=PermisosgeFoms(request.POST)
@@ -206,7 +227,8 @@ def permisogeneral(request):
 				if(nombre.permiso.nombre=="add_tema"):
 					i=48
 				else:
-					i=49
+					if(nombre.permiso.nombre=="bloques_permisos"):
+						i=49
 				#pdb.set_trace()
 				name.user_permissions.add(i)
 				estadoo=True

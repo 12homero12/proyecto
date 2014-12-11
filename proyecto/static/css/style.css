@@ -226,4 +226,18 @@ legend {
 
 .pero form {
 	color: black;
+	border: 1px solid blue;
+	background: rgba(0,0,0,0.2);
+	box-shadow: 10px 10px 10px 10px rgba(255,255,255,0.5);
+	margin: auto;
+	height: 250px;
+	width: 500px;
+	padding: 50px;
+}
+.pero form p{
+	color: white;
+	padding-top: 10px;
+}
+.pero form a{
+	color: red;
 }

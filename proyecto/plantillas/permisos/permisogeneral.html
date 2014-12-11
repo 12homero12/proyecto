@@ -5,14 +5,21 @@
 			{% if estadoo %}
 				<div class="alert alert-success">{{mensaje}}</div>
 			{% endif %}
+			{% if estado %}
+				<div class="alert alert-success">{{mensaje}}</div>
+				
+			{% endif %}
+			{% if not estado %}
+			<h1>Dar permisos permiso</h1>
 			<form action="" method="post" accept-charset="utf-8">
 				{%csrf_token%}
 				{{form_permg.as_p}}
 				<button  type = "submit"  class = "btn btn-info" > Activar Cuenta </button>
-
-				
+				<p>Si no existe permisos tiene que:  <a href="/permisoss/">Agregar</a></p>
 			</form>
+
 			
 			</div>
+			{% endif %}
 		</div>
 {%endblock%}
